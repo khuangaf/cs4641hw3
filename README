@@ -24,10 +24,10 @@
 #######################################################################################
 
 # Personal information (Be sure to change this!)
-FIRSTNAME: Byron
-LASTNAME:  Boots
-GTACCOUNT: bboots3
-GTID:      123456789
+FIRSTNAME: Kung-hsiang
+LASTNAME:  Huang
+GTACCOUNT: khuang87
+GTID:      903266314
 
 # List all sources of help that you consulted while completing this assignment 
 # (other students, colleagues, textbooks, websites, etc.).  This includes anyone you 
@@ -51,7 +51,7 @@ SOURCESCONSULTED: |
 #######################################################################################
 
 # Problem 1b: what is the threshold for the loss matrix?  (only your final numeric answer)
-PROB_PROBDECISIONBOUNDARY_THRESHOLD: 123.45
+PROB_PROBDECISIONBOUNDARY_THRESHOLD: 1/3
 
 
 
@@ -62,16 +62,16 @@ PROB_PROBDECISIONBOUNDARY_THRESHOLD: 123.45
 #######################################################################################
 
 # Problem 2a: what is the expected error rate for only X1?  (only your final numeric answer)
-PROB_DOUBLECOUNTINGEVIDENCE_ERRORX1: 123.45
+PROB_DOUBLECOUNTINGEVIDENCE_ERRORX1: 0.25
 
 # Problem 2a: what is the expected error rate for only X2?  (only your final numeric answer)
-PROB_DOUBLECOUNTINGEVIDENCE_ERRORX2: 123.45
+PROB_DOUBLECOUNTINGEVIDENCE_ERRORX2: 0.3
 
 # Problem 2c: what is the expected error rate adding X3?  (only your final numeric answer)
-PROB_DOUBLECOUNTINGEVIDENCE_ERRORWITHX3: 123.45
+PROB_DOUBLECOUNTINGEVIDENCE_ERRORWITHX3: 0.3
 
 # Problem 2e: does logistic regression suffer from the same problem?  (answer either YES or NO)
-PROB_DOUBLECOUNTINGEVIDENCE_LOGREGPROBLEM: MAYBE
+PROB_DOUBLECOUNTINGEVIDENCE_LOGREGPROBLEM: NO
 
 
 

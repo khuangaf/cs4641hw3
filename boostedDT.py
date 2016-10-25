@@ -6,7 +6,7 @@
 import numpy as np
 from sklearn import tree
 from sklearn.tree import DecisionTreeClassifier
-
+import operator
 class BoostedDT:
 
     def __init__(self, numBoostingIters=100, maxTreeDepth=3):
@@ -37,30 +37,18 @@ class BoostedDT:
             dt = DecisionTreeClassifier(max_depth = self.maxTreeDepth, splitter="random")
             dt.fit(X,y)
             predicted = dt.predict(X)
-            # print "p",predicted
-            # print "y", y
+            
             for j in range(n):
                 if predicted[j] != y[j]:
                     error += weight[j]
-            beta = (np.log((1-error)/error) + np.log(K-1))
-            while beta < 0:
-                error = 0
-                dt = DecisionTreeClassifier(max_depth = self.maxTreeDepth, splitter="random")
-                dt.fit(X,y)
-                predicted = dt.predict(X)
-                # print "p",predicted
-                # print "y", y
-                for j in range(n):
-                    if predicted[j] != y[j]:
-                        error += weight[j]
-                beta = (np.log((1-error)/error) + np.log(K-1))
+            beta = 0.5*(np.log((1.0-error)/error) + np.log(K-1.0))
             self.decisionTreeClassifer.append(dt)
-            self.beta.append(0.5*(np.log((1-error)/error) + np.log(K-1)))
+            self.beta.append(beta)
             for j in range(n):
                 if predicted[j] != y[j]:
-                    weight[j] = weight[j] * np.exp( self.beta[i] * y[j])
+                    weight[j] = weight[j] * np.exp(beta)
             weight /= np.sum(weight)
-
+            print weight
 
 
     def predict(self, X):
@@ -89,16 +77,15 @@ class BoostedDT:
             predicted = self.decisionTreeClassifer[i].predict(X)
             # for k in predicted:
             #     print predicted
-            print self.beta[i]
+            # print self.beta[i]
             for j in range(n):
                 for c in range(K):
                     if predicted[j] == self.classes[c]:
-                        currentCount[j][predicted[j]] += self.beta[i] * self.classes[c]
+                        currentCount[j][predicted[j]] += self.beta[i] 
         
         for i in range(n):
-            result[i] = max(currentCount[i])
-        # for i in range(n):
-        #     predicted = self.decisionTreeClassifer[i].predict(X)*self.beta[i]
+            result[i] = max(currentCount[i].iteritems(), key=operator.itemgetter(1))[0]
+        
         for i in range(n):
             print currentCount[i]
             
