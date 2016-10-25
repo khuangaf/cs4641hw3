@@ -26,6 +26,7 @@ class BoostedDT:
             y is an n-dimensional numpy array
         '''
         #TODO  
+        
         n,d = X.shape
         weight = np.ones(n) / n
         
@@ -48,7 +49,7 @@ class BoostedDT:
                 if predicted[j] != y[j]:
                     weight[j] = weight[j] * np.exp(beta)
             weight /= np.sum(weight)
-            print weight
+            # print weight
 
 
     def predict(self, X):
@@ -86,7 +87,6 @@ class BoostedDT:
         for i in range(n):
             result[i] = max(currentCount[i].iteritems(), key=operator.itemgetter(1))[0]
         
-        for i in range(n):
-            print currentCount[i]
+        
             
         return result
