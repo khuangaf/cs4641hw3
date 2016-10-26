@@ -113,7 +113,7 @@ CHALLENGE_BESTCLASSIFIER_NAME: SVM with RBF kernel
 
 # Copy and paste your brief paragraph describing your best classifier below
 CHALLENGE_BESTCLASSIFIER_DESCRIPTION:
-  For this challenge, I chose to train the following ML classifier...
+  The reason for choosing SVM is that it is very good at classification. I tried all kinds of kernel, such as linear, RBF, Gaussian, and RBF with C=5 turns out to give me the best result.
 
 
 
