@@ -66,7 +66,10 @@ class NaiveBayes:
                 numOfDifferentValues = len(set(X[:,k]))
                 totalCount = sum(self.model[i][k].values())
                 #this is for reference to value that is not in the model.
-                self.model[i][k][self.DNE] = 1.0/(numOfDifferentValues+totalCount)
+                if self.useLaplaceSmoothing:
+                    self.model[i][k][self.DNE] = 1.0/(numOfDifferentValues+totalCount)
+                else:
+                    self.model[i][k][self.DNE] = 0
                 for key in self.model[i][k]:              
                     if self.useLaplaceSmoothing:
                         self.model[i][k][key] = (self.model[i][k][key] + 1.0) / (numOfDifferentValues + totalCount)
